@@ -71,9 +71,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Constants.cs" />
-    <Compile Include="Models\TaxValue.cs" />
-    <Compile Include="Models\VatValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

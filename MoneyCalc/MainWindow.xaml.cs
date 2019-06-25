@@ -39,7 +39,7 @@ namespace MoneyCalc
             double vat = ConvertToCountableType.GetCountableValue(VAT.Text);
             double tax = ConvertToCountableType.GetCountableValue(Tax.Text);
             double result = Calculations.FromNetToGross(amount, vat, tax);
-            txtOutput.Text = result.ToString();
+            txtOutput.Text = $"Brutto is {result.ToString()}";
         }
 
         private void BtnCountFromGross_Click(object sender, RoutedEventArgs e)
@@ -49,7 +49,7 @@ namespace MoneyCalc
             double vat = ConvertToCountableType.GetCountableValue(VAT.Text);
             double tax = ConvertToCountableType.GetCountableValue(Tax.Text);
             double result = Calculations.FromGrossToNet(amount, vat, tax);
-            txtOutput.Text = result.ToString();
+            txtOutput.Text = $"Netto is {result.ToString()}";
         }
     }
 }

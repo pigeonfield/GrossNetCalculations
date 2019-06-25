@@ -10,13 +10,13 @@ namespace MoneyCalc.BL
     {
         public static double FromNetToGross(double amount, double vat, double tax)
         {
-            double result = (amount * (1 + vat / 100)) * ((100 - tax)/100);
+            double result = ((100 - tax) / 100) * (amount / (1 + vat / 100));
             return result;
         }
 
         public static double FromGrossToNet(double amount, double vat, double tax)
         {
-            double result = (amount / (1 + vat / 100)) * ((100 - tax) / 100);
+            double result = (amount * (1 + vat / 100)) / ((100 - tax) / 100);
             return result;
         }
     }
