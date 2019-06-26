@@ -10,9 +10,8 @@
         Title="Invoice Calculations" Height="500" Width="600">
     <Grid Background="#282828">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="22*"/>
-            <ColumnDefinition Width="27*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -24,13 +23,13 @@
 
 
         <StackPanel
-            Grid.Row="0" Grid.ColumnSpan="3" Margin="10,10,10.334,10" Background="#303030">
+            Grid.Row="0" Grid.ColumnSpan="3" Margin="15" Background="#303030">
             <TextBlock x:Name="header" Text="KALKULATOR NETTO / BRUTTO" Foreground="White" FontSize="35"
-                       TextAlignment="Center" Margin="0,13,0,0"/>
+                       TextAlignment="Center" Margin="0,8,0,0"/>
         </StackPanel>
 
         <StackPanel 
-            Grid.Row="1" Margin="15,0,7.667,10" Background="#303030" Grid.ColumnSpan="2" >
+            Grid.Row="1" Margin="15,0,7.5,10" Background="#303030">
 
             <TextBlock Text="Podaj kwotę [PLN]:" FontSize="20"  Margin="0,0,5,0" Foreground="White" />
             <TextBox x:Name="txtInput" TextAlignment="Right" 
@@ -38,7 +37,7 @@
         </StackPanel>
 
         <StackPanel 
-            Grid.Row="1" Grid.Column="2" Margin="7.333,0,15.334,10" Background="#303030">
+            Grid.Row="1" Grid.Column="1" Margin="7.5,0,15,10" Background="#303030">
 
             <TextBlock Text="Stawka VAT [%]:" FontSize="20"  Margin="0,0,5,0" Foreground="White" />
 
@@ -51,12 +50,12 @@
 
         <Button x:Name="btnCountFromNet"
             Grid.Row="2" Grid.Column="0" 
-            Margin="15,5,7.667,14.667" Background="#FFFFA200" Click="BtnCountFromNet_Click" Grid.ColumnSpan="2">
+            Margin="15,5,7.5,15" Background="#FFFFA200" Click="BtnCountFromNet_Click">
             z NETTO na BRUTTO</Button>
 
         <Button x:Name="btnCountFromGross"
-            Grid.Row="2" Grid.Column="2" 
-            Margin="7.333,5,15.334,14.667" Background="#FFFFA200" Click="BtnCountFromGross_Click">
+            Grid.Row="2" Grid.Column="1" 
+            Margin="7.5,5,15,15" Background="#FFFFA200" Click="BtnCountFromGross_Click">
             z BRUTTO na NETTO</Button>
 
         <TextBox x:Name="txtOutput" TextAlignment="Right" 
