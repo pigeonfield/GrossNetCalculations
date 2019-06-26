@@ -21,35 +21,53 @@ namespace MoneyCalc
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-       
-
+    {       
         public MainWindow()
         {
             InitializeComponent();
-            VAT.ItemsSource = new List<string> { "5%", "7%", "8%", "22%", "23%", "No VAT" };
-            Tax.ItemsSource = new List<string> { "9%", "18%", "32%", "No TAX" };
+            VAT.ItemsSource = new List<string> {"No VAT" , "5%", "7%", "8%", "22%", "23%"};
+            Tax.ItemsSource = new List<string> { "No TAX", "9%", "18%", "32%"};
         }
 
 
         private void BtnCountFromNet_Click(object sender, RoutedEventArgs e)
         {
             var input = txtInput.Text;
-            double amount = Double.Parse(input);
-            double vat = ConvertToCountableType.GetCountableValue(VAT.Text);
-            double tax = ConvertToCountableType.GetCountableValue(Tax.Text);
-            double result = Calculations.FromNetToGross(amount, vat, tax);
-            txtOutput.Text = $"Brutto is {result.ToString()}";
+            double amount;
+            if (Double.TryParse(input, out amount)) 
+            {
+                amount = Double.Parse(input);
+                double vat = ConvertToCountableType.GetCountableValue(VAT.Text);
+                double tax = ConvertToCountableType.GetCountableValue(Tax.Text);
+                double result = Math.Round((Calculations.FromNetToGross(amount, vat, tax)), 2);
+                txtOutput.Text = $"Kwota brutto - {result.ToString()} PLN";
+            }
+            else
+            {
+                MessageBox.Show("Wpisz wartość numeryczną!");
+            }
+
+            
         }
 
         private void BtnCountFromGross_Click(object sender, RoutedEventArgs e)
         {
             var input = txtInput.Text;
-            double amount = Double.Parse(input);
-            double vat = ConvertToCountableType.GetCountableValue(VAT.Text);
-            double tax = ConvertToCountableType.GetCountableValue(Tax.Text);
-            double result = Calculations.FromGrossToNet(amount, vat, tax);
-            txtOutput.Text = $"Netto is {result.ToString()}";
+            double amount;
+            if (Double.TryParse(input, out amount))
+            {
+                amount = Double.Parse(input);
+                double vat = ConvertToCountableType.GetCountableValue(VAT.Text);
+                double tax = ConvertToCountableType.GetCountableValue(Tax.Text);
+                double result = Math.Round((Calculations.FromGrossToNet(amount, vat, tax)), 2);
+                txtOutput.Text = $"Kwota netto - {result.ToString()} PLN";
+            }
+            else
+            {
+                MessageBox.Show("Wpisz wartość numeryczną!");
+            }
+
+            
         }
     }
 }
