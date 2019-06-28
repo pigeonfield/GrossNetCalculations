@@ -34,7 +34,8 @@
             <TextBlock Text="Podaj kwotę [PLN]:" FontSize="20"  Margin="0,0,5,0" Foreground="White" 
                        TextAlignment="Center"/>
             <TextBox x:Name="txtInput" TextAlignment="Right" Margin="20, 3, 25, 0"
-                     Foreground="Black" Height="100" />
+                     Foreground="Black" Height="100" 
+                     />
         </StackPanel>
 
         <StackPanel 
@@ -53,7 +54,11 @@
 
         <Button x:Name="btnCountFromNet"
             Grid.Row="2" Grid.Column="0" FontSize="25"
-            Margin="15,5,7.5,15" Background="#FFFFA200" Click="BtnCountFromNet_Click">
+            Margin="15,5,7.5,15" Background="#FFFFA200" 
+                Command="{Binding CalcFromNetToGrossCmd}" 
+                CommandParameter="{Binding ElementName=txtInput, Path=Text}"
+                IsEnabled="{Binding }"
+                >
             z NETTO na BRUTTO</Button>
 
         <Button x:Name="btnCountFromGross"
@@ -62,9 +67,11 @@
             z BRUTTO na NETTO</Button>
 
         <TextBox x:Name="txtOutput" TextAlignment="Right" 
+                 Text="{Binding CalcFromNetToGrossCmd.result, Mode=OneWay}"
                  VerticalAlignment="Bottom" FontSize="30"
                  Foreground="Black" IsReadOnly="true"
                  Grid.Row="3" Grid.ColumnSpan="2"
-                 Margin="15,0,15,25.667" Height="79"/>
+                 Margin="15,0,15,25.667" Height="79"
+                 />
     </Grid>
 </Window>
