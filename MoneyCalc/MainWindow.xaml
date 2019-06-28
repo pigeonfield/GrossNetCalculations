@@ -24,8 +24,8 @@
 
         <StackPanel
             Grid.Row="0" Grid.ColumnSpan="3" Margin="15" Background="#303030">
-            <TextBlock x:Name="header" Text="KALKULATOR NETTO / BRUTTO" Foreground="White" FontSize="35"
-                       TextAlignment="Center" Margin="0,8,0,0"/>
+            <TextBlock x:Name="header" Text="KALKULATOR NETTO / BRUTTO" Foreground="White" FontSize="30"
+                       TextAlignment="Center" Margin="0,15,0,0" FontWeight="UltraBold"/>
         </StackPanel>
 
         <StackPanel 
@@ -56,10 +56,18 @@
             Grid.Row="2" Grid.Column="0" FontSize="25"
             Margin="15,5,7.5,15" Background="#FFFFA200" 
                 Command="{Binding CalcFromNetToGrossCmd}" 
-                CommandParameter="{Binding ElementName=txtInput, Path=Text}"
-                IsEnabled="{Binding }"
-                >
-            z NETTO na BRUTTO</Button>
+                CommandParameter="{Binding ElementName=txtInput, Path=Text}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=txtInput, Path=Text}" Value="">
+                            <Setter Property="Button.IsEnabled" Value="false" />
+                        </DataTrigger>                        
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            z NETTO na BRUTTO
+        </Button>
 
         <Button x:Name="btnCountFromGross"
             Grid.Row="2" Grid.Column="1" FontSize="25"
